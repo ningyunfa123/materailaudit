@@ -1,0 +1,17 @@
+server:
+  port: 8551
+shell:
+  path: /home/ningyunfa1/vpsproject/portrestrict.sh
+spring:
+    datasource:
+        name: test
+        url: jdbc:mysql://127.0.0.1:3306/db_equipment?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+        username: root
+        password: 983116
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.audit.materialaudit.model
+logging:
+  level:
+    com.audit.materialaudit.mapper: trace

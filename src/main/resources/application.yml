@@ -1,0 +1,28 @@
+server:
+  port: 8551
+
+spring:
+    datasource:
+        name: test
+        url: jdbc:mysql://127.0.0.1:3306/db_equipment?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+        username: root
+        password: 983116
+    redis:
+      database: 0
+      host: 10.64.28.19
+      port: 8379
+      password:
+      jedis:
+        pool:
+          max-active: 8
+          max-wait: -1
+          max-idle: 5
+          min-idle: 0
+      timeout: 10000
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.audit.materialaudit.model
+logging:
+  level:
+    com.audit.materialaudit.mapper: trace

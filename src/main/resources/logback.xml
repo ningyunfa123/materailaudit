@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOG_HOME" value=".."/>
+
+    <appender name="allLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/logs/materialaudit.all.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/logs/history/materialaudit.all.%d{yyyyMMddHH}.log</fileNamePattern>
+            <maxHistory>336</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%date{yyyy-MM-dd'T'HH:mm:ss.SSS}][%level][%thread][%X{LOG_ID}][%logger{68}:%line] %msg%n%ex
+            </pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+    </appender>
+
+    <appender name="warnLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/logs/materialaudit.warn.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_HOME}/logs/history/materialaudit.warn.%d{yyyyMMdd}.log</FileNamePattern>
+            <maxHistory>14</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%date{yyyy-MM-dd'T'HH:mm:ss.SSS}][%level][%thread][%X{LOG_ID}][%logger{68}:%line] %msg%n%ex
+            </pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="errorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_HOME}/logs/materialaudit.error.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_HOME}/logs/history/materialaudit.error.%d{yyyyMMdd}.log</FileNamePattern>
+            <maxHistory>14</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>[%date{yyyy-MM-dd'T'HH:mm:ss.SSS}][%level][%thread][%X{LOG_ID}][%logger{68}:%line] %msg%n%ex
+            </pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <!--  for test  -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+
+            <Pattern>
+                [%date{yyyy-MM-dd'T'HH:mm:ss.SSS}][%level][%thread][%X{LOG_ID}][%logger{68}:%line] %msg%n%ex
+            </Pattern>
+
+        </layout>
+    </appender>
+
+
+    <root level="INFO">
+        <appender-ref ref="allLog"/>
+        <appender-ref ref="warnLog"/>
+        <appender-ref ref="errorLog"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
