@@ -33,8 +33,6 @@ public class MaterialauditApplicationTests {
         String key = "redisTest";
         redisHelper.hashSet("redisTest","mytest", "1234");
         System.out.println(JSON.toJSONString(redisHelper.hashFindAll("redisTest")));
-
-
     }
 
 }
