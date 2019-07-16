@@ -1,7 +1,7 @@
 package com.audit.materialaudit;
 
 import com.alibaba.fastjson.JSON;
-import com.audit.materialaudit.common.RedisHelper;
+import com.audit.materialaudit.common.RedisService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class MaterialauditApplicationTests {
     private CacheErrorHandler errorHandler;
 
     @Autowired
-    private RedisHelper<String, String> redisHelper;
+    private RedisService<String, String> redisHelper;
     @Test
     public void contextLoads() {
         String key = "redisTest";

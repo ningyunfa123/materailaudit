@@ -1,6 +1,5 @@
 package com.audit.materialaudit.common;
 
-import com.audit.materialaudit.common.RedisHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Service;
@@ -10,7 +9,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Service
-public class RedisHelperImpl<HK, T> implements RedisHelper<HK, T> {
+public class RedisServiceImpl<HK, T> implements RedisService<HK, T> {
 
     private RedisTemplate<String, T> redisTemplate;
     private HashOperations<String, HK, T> hashOperations;
@@ -20,7 +19,7 @@ public class RedisHelperImpl<HK, T> implements RedisHelper<HK, T> {
     private ValueOperations<String, T> valueOperations;
 
     @Autowired
-    public RedisHelperImpl(RedisTemplate<String, T> redisTemplate){
+    public RedisServiceImpl(RedisTemplate<String, T> redisTemplate){
         this.redisTemplate = redisTemplate;
         this.hashOperations = redisTemplate.opsForHash();
         this.listOperations = redisTemplate.opsForList();

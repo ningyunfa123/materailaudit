@@ -2,9 +2,8 @@ package com.audit.materialaudit.common;
 
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
-public interface RedisHelper<HK, T> {
+public interface RedisService<HK, T> {
     /**
      * Hash结构 添加元素 * @param key key * @param hashKey hashKey * @param domain 元素
      */
